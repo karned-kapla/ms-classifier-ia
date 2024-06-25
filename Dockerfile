@@ -23,7 +23,7 @@ COPY preprocessing_text_features.py ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install python-multipart
 RUN pip install nltk
-RUN pip install uvicorn \
+RUN pip install uvicorn
 RUN python3 -m spacy download fr_core_news_sm
 RUN python3 -m spacy download en_core_web_sm
 RUN python3 download_contents.py
