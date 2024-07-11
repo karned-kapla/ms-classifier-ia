@@ -16,12 +16,13 @@ def treatment(full_path):
     both_model_path = 'models/Merge_Max.keras'
 
     txt = ocr(full_path)
-    txt = clean_transform_ocerised_text(txt)
-    txt = token_lemmatization_and_remove_stop_words(txt)
 
     img = load_and_preprocess_image(full_path)
 
     if txt != '':
+        txt = clean_transform_ocerised_text(txt)
+        txt = token_lemmatization_and_remove_stop_words(txt)
+
         model = 'image+text'
         with open(txt_transformer_path, 'rb') as f:
             my_transformer = pickle.load(f)
