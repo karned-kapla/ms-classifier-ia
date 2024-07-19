@@ -18,6 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install python-multipart
 RUN pip install nltk
 RUN pip install scikit-learn
+RUN pip install tensorflow
+RUN pip install pillow
 RUN pip install uvicorn
 RUN python3 -m spacy download fr_core_news_sm
 RUN python3 -m spacy download en_core_web_sm
@@ -30,7 +32,11 @@ COPY my_file.py ./
 COPY my_ocr.py ./
 COPY my_treatment.py ./
 COPY preprocessing_text_features.py ./
+COPY preprocessing_image_features.py ./
+
 COPY models/OvR_LR.pkl ./models/
 COPY models/tfidfVectorizer_transformer.pkl ./models/
+COPY models/CNN_DenseNet.keras ./models/
+COPY models/Merge_Max.keras ./models/
 
-CMD exec uvicorn main:app --host 0.0.0.0 --port ${PORT} --workers 1
+CMD exec uvicorn main:app --host 0.0.0.0 --port ${PORT} --workers 1 --reload
