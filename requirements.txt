@@ -8,3 +8,4 @@ spacy~=3.7.5
 langdetect~=1.0.9
 tensorflow~=2.16.2
 pillow~=10.4.0
+opencv-python~=4.10.0.84

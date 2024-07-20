@@ -15,8 +15,11 @@ WORKDIR $APP_HOME
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y libhdf5-dev
+RUN apt-get install -y libgl1-mesa-glx
+RUN apt-get install -y libglib2.0-0
 RUN pip install --upgrade pip
 RUN pip install h5py
+RUN pip install opencv-python
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -28,7 +31,6 @@ RUN pip install pillow
 RUN pip install uvicorn
 RUN python3 -m spacy download fr_core_news_sm
 RUN python3 -m spacy download en_core_web_sm
-RUN pip install opencv-python
 
 COPY download_contents.py ./
 RUN python3 download_contents.py
