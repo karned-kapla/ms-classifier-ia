@@ -12,6 +12,11 @@ EXPOSE $PORT
 
 WORKDIR $APP_HOME
 
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y libhdf5-dev
+RUN pip install --upgrade pip
+RUN pip install h5py
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
