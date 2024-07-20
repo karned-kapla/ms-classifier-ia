@@ -23,6 +23,7 @@ RUN pip install pillow
 RUN pip install uvicorn
 RUN python3 -m spacy download fr_core_news_sm
 RUN python3 -m spacy download en_core_web_sm
+RUN pip install opencv-python
 
 COPY download_contents.py ./
 RUN python3 download_contents.py
