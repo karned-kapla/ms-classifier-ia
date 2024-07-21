@@ -8,7 +8,7 @@ def save_upload(file):
     Path(folder).mkdir(parents = True, exist_ok = True)
     try:
         file_extension = Path(file.filename).suffix
-        if file_extension not in ['.jpeg', '.jpg', '.png', '.tiff']:
+        if file_extension not in ['.jpeg', '.jpg', '.png', '.tiff', '.tif']:
             raise ValueError("Invalid file type. Only .jpeg, .jpg, .png and .tiff are allowed.")
         random_file_name = f"{uuid4().hex}{file_extension}"
         full_path = Path(folder) / random_file_name
